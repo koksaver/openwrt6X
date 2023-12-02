@@ -61,3 +61,20 @@ define Device/jdc_ax1800-pro
 	IMAGE/rootfs.bin := append-rootfs | pad-rootfs | pad-to $$(BLOCKSIZE)
 endef
 TARGET_DEVICES += jdc_ax1800-pro
+
+define Device/qihoo_v6
+	$(call Device/FitImage)
+	$(call Device/EmmcImage)
+	DEVICE_VENDOR := Qihoo 360
+	DEVICE_MODEL := V6
+	DEVICE_DTS_CONFIG := config@cp03-c2
+	DEVICE_DTS := ipq6018-qihoo_v6
+	SOC := ipq6018
+	DEVICE_PACKAGES := ipq-wifi-qihoo_v6 kmod-fs-ext4 mkf2fs f2fsck kmod-fs-f2fs
+	BLOCKSIZE := 64k
+	IMAGES += kernel.bin rootfs.bin
+	IMAGE/kernel.bin := append-kernel
+	IMAGE/rootfs.bin := append-rootfs | pad-rootfs | pad-to $$(BLOCKSIZE)
+endef
+TARGET_DEVICES += qihoo_v6
+
