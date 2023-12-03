@@ -263,55 +263,50 @@
 };
 
 &soc {
-	dp1: dp@1 {
-		compatible = "qcom,nss-dp";
-		reg = <0x0 0x3a001000 0x0 0x200>;
-		qcom,mactype = <0>;
-		qcom,id = <1>;
 
-		phy-handle = <&phy_0>;
-		phy-mode = "sgmii";
-	};
-
-	dp2 {
+   dp2: dp2 {
+		device_type = "network";
 		compatible = "qcom,nss-dp";
 		reg = <0x0 0x3a001200 0x0 0x200>;
 		qcom,mactype = <0>;
+		local-mac-address = [000000000000];
 		qcom,id = <2>;
-
-		phy-handle = <&phy_1>;
+		phy-handle = <&qca8075_1>;
 		phy-mode = "sgmii";
-	};
+    };
 
-	dp3 {
+    dp3: dp3 {
+		device_type = "network";
 		compatible = "qcom,nss-dp";
 		reg = <0x0 0x3a001400 0x0 0x200>;
 		qcom,mactype = <0>;
+		local-mac-address = [000000000000];
 		qcom,id = <3>;
-
-		phy-handle = <&phy_2>;
+		phy-handle = <&qca8075_2>;
 		phy-mode = "sgmii";
-	};
+    };
 
-	dp4 {
+    dp4: dp4 {
+		device_type = "network";
 		compatible = "qcom,nss-dp";
 		reg = <0x0 0x3a001600 0x0 0x200>;
 		qcom,mactype = <0>;
+		local-mac-address = [000000000000];
 		qcom,id = <4>;
-
-		phy-handle = <&phy_3>;
+		phy-handle = <&qca8075_3>;
 		phy-mode = "sgmii";
-	};
+    };
 
-	dp5 {
+    dp5: dp5 {
+		device_type = "network";
 		compatible = "qcom,nss-dp";
 		reg = <0x0 0x3a001800 0x0 0x200>;
 		qcom,mactype = <0>;
+		local-mac-address = [000000000000];
 		qcom,id = <5>;
-
-		phy-handle = <&phy_4>;
+		phy-handle = <&qca8075_4>;
 		phy-mode = "sgmii";
-	};
+    };
 };
 
 
