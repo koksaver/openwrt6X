@@ -17,11 +17,11 @@ platform_pre_upgrade() {
 platform_do_upgrade() {
 	case "$(board_name)" in
 	glinet,gl-axt1800|\
-	glinet,gl-ax1800)
+	glinet,gl-ax1800|\
+	qihoo,v6)
 		nand_do_upgrade "$1"
 		;;
-	jdc,ax1800-pro|\
-	qihoo,v6)
+	jdc,ax1800-pro)
 		kernelname="0:HLOS"
 		rootfsname="rootfs"
 		mmc_do_upgrade "$1"

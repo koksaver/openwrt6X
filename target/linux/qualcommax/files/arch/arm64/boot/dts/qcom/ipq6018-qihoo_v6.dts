@@ -41,8 +41,6 @@
 		stdout-path = "serial0:115200n8";
 	};
 
-    /delete-node/ rpm-glink;
-
     keys {
 		compatible = "gpio-keys";
 
@@ -118,23 +116,6 @@
 	status = "okay";
 };
 
-&blsp1_spi1 {
-	pinctrl-0 = <&spi_1_pins>;
-	pinctrl-names = "default";
-	cs-select = <0>;
-	status = "okay";
-
-	m25p80@0 {
-		#address-cells = <1>;
-		#size-cells = <1>;
-		reg = <0>;
-		compatible = "n25q128a11";
-		linux,modalias = "m25p80", "n25q128a11";
-		spi-max-frequency = <50000000>;
-		use-default-sizes;
-	};
-};
-
 &prng {
 	status = "okay";
 };
@@ -207,35 +188,36 @@
 &switch {
 	status = "okay";
 
-	switch_cpu_bmp = <0x1>;  /* cpu port bitmap */
-    switch_lan_bmp = <(ESS_PORT3 | ESS_PORT4 | ESS_PORT5)>; /* lan port bitmap */
-	switch_wan_bmp = <ESS_PORT2>; /* wan port bitmap */
-	switch_mac_mode = <MAC_MODE_PSGMII>; /* mac mode for uniphy instance0*/
-	switch_mac_mode1 = <0xff>; /* mac mode for uniphy instance1*/
-	switch_mac_mode2 = <0xff>; /* mac mode for uniphy instance2*/
+	switch_lan_bmp = <0x1e>;
+	switch_wan_bmp = <0x20>;
+	switch_mac_mode = <0x00>;
+	switch_mac_mode1 = <0xff>;
+	switch_mac_mode2 = <0xff>;
 
 	qcom,port_phyinfo {
-        port@1 {
-            port_id = <2>;
-            phy_address = <1>;
-        };
-
-        port@2 {
-            port_id = <3>;
-            phy_address = <2>;
-        };
-
-        port@3 {
-            port_id = <4>;
-            phy_address = <3>;
-        };
-
-        port@4 {
-            port_id = <5>;
-            phy_address = <4>;
-        };
+		port@0 {
+			port_id = <0x01>;
+			phy_address = <0x00>;
+		};
+		port@1 {
+			port_id = <0x02>;
+			phy_address = <0x01>;
+		};
+		port@2 {
+			port_id = <0x03>;
+			phy_address = <0x02>;
+		};
+		port@3 {
+			port_id = <0x04>;
+			phy_address = <0x03>;
+		};
+		port@4 {
+			port_id = <0x05>;
+			phy_address = <0x04>;
+		};
 	};
 };
+
 
 &qpic_bam {
 	status = "okay";
@@ -254,8 +236,6 @@
 
 &wifi {
 	status = "okay";
-    qcom,ath11k-calibration-variant = "JDC-AX1800-Pro";
-	qcom,ath11k-fw-memory-mode = <1>;
 };
 
 &soc {
