@@ -65,11 +65,11 @@ TARGET_DEVICES += jdc_ax1800-pro
 define Device/qihoo_v6
 	$(call Device/FitImage)
 	$(call Device/UbiFit)
-	DEVICE_VENDOR := Qihoo 360
+	DEVICE_VENDOR := Qihoo
 	DEVICE_MODEL := V6
 	DEVICE_DTS_CONFIG := config@cp03-c1
 	SOC := ipq6018
-	DEVICE_PACKAGES := ath11k-wifi-qihoo_v6
+	DEVICE_PACKAGES := ipq-wifi-qihoo_v6 kmod-fs-ext4 mkf2fs f2fsck kmod-fs-f2fs
 	BLOCKSIZE := 128k
 	PAGESIZE := 2048
 endef
